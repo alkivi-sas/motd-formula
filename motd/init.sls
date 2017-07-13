@@ -9,6 +9,7 @@
     - source: salt://motd/files/update.d
     - dir_mode: 0755
     - file_mode: '0755'
+    - clean: True
 
 /etc/profile.d/display_motd.sh:
   file.managed:
