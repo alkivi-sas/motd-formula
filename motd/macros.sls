@@ -10,10 +10,9 @@ motd_{{ name }}:
 
 {%- macro motd_package_role(name, role, package, state='present') -%}
 
-{% set latest = salt['pkg.latest_version'](package) %}
 {% set version = salt['pkg.version'](package) %}
 {% if not version %}
-{% set version = latest %}
+{% set version = salt['pkg.latest_version'](package) %}
 {% endif %}
 
 {{ motd_role(name, role ~ ' : ' ~ version) }}
