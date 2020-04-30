@@ -8,6 +8,6 @@ motd_{{ name }}:
       - file: /etc/motd.d
 {%- endmacro -%}
 
-{%- macro motd_package_role(name, role, package, state='present') -%}
+{%- macro motd_package_role(name, role, package='', state='present') -%}
 {{ motd_role(name, role, state) }}
 {%- endmacro -%}
