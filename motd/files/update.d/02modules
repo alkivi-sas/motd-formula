@@ -7,6 +7,10 @@ set -f
 
 echo -e "\033[0;35m++++++++++++++++++++++++++++++++++++: \033[0;37mLocal Modules\033[0;35m :+++++++++++++++++++++++++++++++++++++++++"
 for module in `ls /etc/motd.d`;
-do echo -e "\033[0;35m+    \033[0;37m -- \033[1;32m" `cat /etc/motd.d/$module`; done;
+do
+    VERSION=`dpkg-query -W -f='${Version}' ${module}`;
+    DISPLAY=`cat /etc/motd.d/${module}`;
+    echo -e "\033[0;35m+    \033[0;37m -- \033[1;32m ${DISPLAY}: ${VERSION}";
+done;
 echo -e "\033[0;35m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo -e "\033[0m"
